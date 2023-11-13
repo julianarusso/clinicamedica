@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Validar CPF e CNPJ</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <form method="post" action='https://register-demo.freecodecamp.org'>
+        <h1>Validar CPF e CNPJ</h1>
+        <p>Por gentileza, preencha com as informações necessarias </p>
+      <fieldset>
+        <label for="first-name">Usuario <input id="user" name="user" type="text" required /></label>
+        <label for="new-password">Senha <input id="password" name="password" type="password" pattern="[a-z0-5]{8,}" required /></label>
+       <label for="CPF">CPF <input id="cpf" name="CPF" type="text" required /></label>
+        <label for="CNPJ">CNPJ <input id="cnpj" name="CNPJ" type="password" pattern="[a-z0-5]{8,}" required /></label>
+        <button type="button" onclick="valida()">Validar</button>
+    </fieldset>
+    </form>
+    <div id="result"></div>
+  <script>
+    function valida() {
+     
+       let result = validaCPF(document.getElementById("cpf").value);
+        document.getElementById("result").innerHTML = `CPF: ${result}`;
+
+        result = validaCNPJ(document.getElementById("cnpj").value);
+        document.getElementById("result").innerHTML = `CNPJ: ${result}`;
+    }
+
+    function validaCPF(cpf) {
+      alert("validacpf");
+        //37246951288
+        //10 9 8 7 6 5 4 3 2
+        //30+63+16+28+36+45+20+03+04=245
+        //  245%11 = quoc 22 resto 3    11-3=8
+
+        // 3 7 2 4 6 9 5 1 2 8 8
+        //11 10 9 8 7 6 5 4 3 2
+        //33+70+18+32+42+54+25+04+06+16=300
+        //300%11 = quoc 27 resto 3  11-3=8
+
+      
+
+
+        let soma=cpf[0]*10;
+        soma+=cpf[1]*9;
+        soma+=cpf[2]*8;
+        soma+=cpf[3]*7;
+        soma+=cpf[4]*6;
+        soma+=cpf[5]*5;
+        soma+=cpf[6]*4;
+        soma+=cpf[7]*3;
+        soma+=cpf[8]*2;        
+        
+
+        let resto=soma%11;
+        if(resto<2){
+          dig1=0;
+    }
+        else{
+        dig1=11-resto;
+  }
+        alert(dig1);
+
+        if(dig1==cpf[9]) (
+
+          soma=cpf[0]*11;
+        soma+=cpf[1]*10;
+        soma+=cpf[2]*9;
+        soma+=cpf[3]*8;
+        soma+=cpf[4]*7;
+        soma+=cpf[5]*6;
+        soma+=cpf[6]*5;
+        soma+=cpf[7]*4;
+        soma+=cpf[8]*3;        
+        soma+=cpf[9]*2
+
+        resto=soma%11;
+        if(resto<2){
+          dig2=0;
+    }
+        else{
+        dig2=11-resto;
+  }
+        return "Ok";
+    
+        }
+        function validaCNPJ(cnpj) {
+         // 8  1. 9  8  9. 3  7  2 /0  0  0  1 - 9 4
+        // 5  4  3  2  9  8  7  6  5  4  3  2
+        //40+04+27+16+81+24+49+12+00+00+00+02=255
+        // 255/11=23  resto=2    dig1=11-2=9
+        // 8  1. 9  8  9. 3  7  2 /0  0  0  1- 9 4
+        // 6  5  4  3  2  9  8  7  6  5  4  3  2
+        //48+05+36+24+18+27+56+14+00+00+00+03+18=249
+        //249/11=22  resto=7     dig2=11-7=4
+
+        return "Ok"
+
+        }
+
+        function geracpf(){
+
+        }
+
+        function geracnpj(){
+
+        }
+    
+  </script>
+</body>
+</html>

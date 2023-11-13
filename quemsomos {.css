@@ -1,0 +1,20 @@
+body {
+    background-image: url(./imagens/fundo.jpg);
+}
+h1 {
+    text-align: center;
+    margin-top: 5%
+}
+h2 {
+    margin-left: 40%;
+    width: 25%;
+    height: 1.9rem;
+    border-radius: 9rem;
+    font-size: 24px;
+}
+h3 {
+    margin-left: 38%;
+    width: 25%;
+    height: 1.9rem;
+    border-radius: 9rem;
+}

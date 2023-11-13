@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Exemplo de Exercício</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Calculo IMC</legend>
+        <label for="quilos">quilos:</label>
+        <input  type="text" name="quilos" id="quilos" required>
+        <br>
+        <br>
+        <label for="altura">metros:</label>
+        <input type="text" name="altura" id="altura" required>
+        <br>
+        <br>
+        <button type="button" onclick="calcular()">Calcular</button>
+        <br>
+        <br>
+        <label for="imc">imc:</label>
+        <input type="text" name="imc" id="imc">
+        <br>
+        <br>
+        <label for="classific">Classificação: </label>
+        <input type="text" name="classific" id="classific">
+        <br>   
+        <br>
+    </fieldset>
+    <script type="text/javascript">
+        function calcular() {
+            var quilos = document.getElementById("quilos").value;
+            var altura = document.getElementById("altura").value;
+            var imc = quilos / (altura * altura);
+  
+            if(imc < 18.5) {
+                classific="olivia palito";
+            } 
+            if(imc >18.5 && imc <= 24.9) {
+                classific="Peso normal";
+            }
+            if(imc >24.9 && imc <= 29.9) {
+                 classific="Sobrepeso";
+            }
+            if(imc >29.9 && imc <= 34.9) {
+                classific="Obesidade Grau I";
+            }
+            if(imc >34.9 && imc <= 40) {
+                classific="Obesidade Grau II";
+            }
+             if(imc>40) {
+                classific="Thais Carla";
+            }
+            document.getElementById("imc").value = imc;
+            document.getElementById("classific").value = classific;
+        }
+
+    </script>
+
+</body>
+</html>
